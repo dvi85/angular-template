@@ -16,7 +16,7 @@ export class AuthService {
     constructor(private http: HttpClient) {}
 
     login(credentials: Credentials): Observable<AppUser> {
-        return this.http.get(this.env.base + "/appuser.json", {withCredentials: true})
+        return this.http.post("http://localhost:8888/auth", credentials, {withCredentials: true})
             .pipe(switchMap(_ => this.http.get(this.env.base + "/appuser.json", {withCredentials: true})),
                 map(data => data as AppUser)
             );
