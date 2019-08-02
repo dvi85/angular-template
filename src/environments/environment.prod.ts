@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    base: "http://localhost:8080"
+    auth: "http://localhost:8888/auth"
 };
