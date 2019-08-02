@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    base: "http://localhost:4200/assets/mock"
+    auth: "http://localhost:8888/auth"
 };
 
 /*
