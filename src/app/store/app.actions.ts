@@ -8,3 +8,7 @@ export class AppLoginSuccessAction {
 export class AppLogoutAction {
     static readonly type = 'Logout';
 }
+
+export class AppLogoutSuccessAction {
+    static readonly type = 'Logout Success';
+}

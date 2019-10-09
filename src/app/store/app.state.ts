@@ -1,13 +1,12 @@
 import {Action, State, StateContext} from "@ngxs/store";
 import {AppUser} from "./app.user";
-import {AppLoginSuccessAction, AppLogoutAction} from "./app.actions";
+import {AppLoginSuccessAction, AppLogoutAction, AppLogoutSuccessAction} from "./app.actions";
 import {Navigate} from "@ngxs/router-plugin";
 
 
 export interface AppStateModel{
     appUser?: AppUser
 }
-
 
 @State<AppStateModel>({
     name: 'app',
@@ -35,4 +34,13 @@ export class AppState {
         ctx.dispatch(new Navigate(['/']));
     }
 
+    @Action(AppLogoutSuccessAction)
+    logoutSucess(ctx: StateContext<AppStateModel>) {
+        const state = ctx.getState();
+        ctx.setState({
+            ...state,
+            appUser: null
+        });
+        ctx.dispatch(new Navigate(['/']));
+    }
 }

@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Credentials} from "./store/credentials";
 import {Observable, of} from "rxjs/index";
 import {map, switchMap} from 'rxjs/operators';
@@ -16,10 +16,16 @@ export class AuthService {
     constructor(private http: HttpClient) {}
 
     login(credentials: Credentials): Observable<AppUser> {
-        return this.http.get(this.env.base + "/appuser.json", {withCredentials: true})
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+                'Authorization': 'Basic ' + btoa(`${credentials.login}:${credentials.password}`),
+            }),
+            withCredentials: true,
+        };
+        return this.http.post(this.env.base + "/login", null, httpOptions)
             .pipe(switchMap(_ => this.http.get(this.env.base + "/appuser.json", {withCredentials: true})),
                 map(data => data as AppUser)
             );
     }
-
 }

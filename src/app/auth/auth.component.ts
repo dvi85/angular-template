@@ -4,7 +4,6 @@ import {AuthLoginAction} from "./store/auth.actions";
 import {Select, Store} from '@ngxs/store';
 import {debounce, filter, merge} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material";
-import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'auth-login',
@@ -27,7 +26,8 @@ export class AuthComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.authFailed$.pipe(filter(Boolean)).subscribe(v => this.snackBarRef = this.snackBar.open('Login failed'));
+        this.authFailed$.pipe(filter(Boolean))
+            .subscribe(v => this.snackBarRef = this.snackBar.open('Login failed'));
 
         this.authFailed$.pipe(filter(Boolean)).pipe(
             debounce(() => this.form.get('login').valueChanges.pipe(merge(this.form.get('password').valueChanges)))
