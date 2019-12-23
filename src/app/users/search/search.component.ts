@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {Store} from "@ngxs/store";
-import {SearchAction} from "../store/users.actions";
+import {switchMap, tap} from "rxjs/operators";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-search',
@@ -14,10 +14,15 @@ export class SearchComponent implements OnInit {
         search: new FormControl('')
     });
 
-  constructor(private store: Store) { }
+    @Output() search: EventEmitter<string> = new EventEmitter();
+
+  constructor() { }
 
   ngOnInit() {
-      this.form.get('search').valueChanges.subscribe(v => this.store.dispatch(new SearchAction(v)));
+      this.search.emit('');
+      this.form.valueChanges.subscribe((value => {
+          this.search.emit(value);
+      }))
   }
 
 }
