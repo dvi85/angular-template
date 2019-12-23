@@ -1,6 +1,6 @@
 <app-container>
     <div>
-      <app-search></app-search>
-      <app-grid></app-grid>
+      <app-search (search)="searchData($event)"></app-search>
+      <app-grid [userList]="userList"></app-grid>
     </div>
 </app-container>

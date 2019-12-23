@@ -7,9 +7,6 @@ import { AppMaterialModule } from './material/app.material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MainModule} from "./main/main.module";
-import {NgxsRouterPluginModule} from "@ngxs/router-plugin";
-import {NgxsModule} from "@ngxs/store";
-import {AppState} from "./store/app.state";
 
 @NgModule({
   declarations: [
@@ -23,10 +20,6 @@ import {AppState} from "./store/app.state";
       AppMaterialModule,
       BrowserAnimationsModule,
       ReactiveFormsModule,
-      NgxsModule.forRoot([
-          AppState
-      ]),
-      NgxsRouterPluginModule.forRoot(),
       MainModule
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,6 @@
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {MediaMatcher} from "@angular/cdk/layout";
-import {Store} from "@ngxs/store";
-import {AppLogoutAction} from "../../store/app.actions";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-container',
@@ -14,14 +13,14 @@ export class ContainerComponent implements OnDestroy {
 
     private _mobileQueryListener: () => void;
 
-    constructor(private store: Store, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+    constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private authService:AuthService) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addListener(this._mobileQueryListener);
     }
 
     logout() {
-        this.store.dispatch(new AppLogoutAction());
+        this.authService.logout();
     }
 
     ngOnDestroy(): void {

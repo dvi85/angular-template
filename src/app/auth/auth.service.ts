@@ -5,6 +5,7 @@ import {Observable, of} from "rxjs/index";
 import {map, switchMap} from 'rxjs/operators';
 import {AppUser} from "../store/app.user";
 import {environment} from "../../environments/environment";
+import {Router} from "@angular/router";
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
 
     env = environment;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private router: Router) {}
 
     login(credentials: Credentials): Observable<AppUser> {
         const httpOptions = {
@@ -23,9 +24,14 @@ export class AuthService {
             }),
             withCredentials: true,
         };
-        return this.http.post(this.env.base + "/login", null, httpOptions)
-            .pipe(switchMap(_ => this.http.get(this.env.base + "/appuser.json", {withCredentials: true})),
-                map(data => data as AppUser)
-            );
+        // return this.http.post(this.env.base + "/login", null, httpOptions)
+        //     .pipe(switchMap(_ => this.http.get(this.env.base + "/appuser.json", {withCredentials: true})),
+        //         map(data => data as AppUser)
+        //     );
+        return this.http.get(this.env.base + "/appuser.json", {withCredentials: true}).pipe(map(data => data as AppUser));
+    }
+
+    logout() {
+        this.router.navigate(['/', 'auth', 'login']);
     }
 }

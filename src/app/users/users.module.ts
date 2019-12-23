@@ -7,8 +7,6 @@ import { SearchComponent } from './search/search.component';
 import { GridComponent } from './grid/grid.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MainModule} from "../main/main.module";
-import {NgxsModule} from "@ngxs/store";
-import {UsersState} from "./store/users.state";
 
 
 const routes: Routes = [
@@ -21,9 +19,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
       RouterModule.forChild(routes),
-      NgxsModule.forRoot([
-              UsersState
-          ]),
       CommonModule,
       AppMaterialModule,
       ReactiveFormsModule,
