@@ -1,0 +1,35 @@
+h1 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mat-dialog-container {
+  padding: 30px;
+  padding-top: 43px;
+  padding-bottom: 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  .confirm-dialog {
+    padding-bottom: 42px;
+    .mat-dialog-title {
+      text-align: center;
+    }
+    .content {
+      max-height: 65vh;
+      overflow: auto;
+      .message {
+        word-wrap: break-word;
+      }
+    }
+    .round-button {
+      margin: 0 auto;
+      margin-top: 31px;
+      width: 230px;
+    }
+  }
+}
+.mat-dialog-content {
+  max-height: none;
+  overflow: unset;
+}
