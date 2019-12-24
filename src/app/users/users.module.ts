@@ -7,11 +7,13 @@ import { SearchComponent } from './search/search.component';
 import { GridComponent } from './grid/grid.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MainModule} from "../main/main.module";
+import {AuthGuard} from "../auth/auth.guard";
 
 
 const routes: Routes = [
     {
         path: 'list',
+        canActivate: [AuthGuard],
         component: UsersListComponent
     }
 ];

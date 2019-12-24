@@ -1,37 +1,80 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Credentials} from "./store/credentials";
-import {Observable, of} from "rxjs/index";
-import {map, switchMap} from 'rxjs/operators';
-import {AppUser} from "../store/app.user";
-import {environment} from "../../environments/environment";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {ACCESS_TOKEN, AUTH_URL, CLIENT_ID, CLIENT_SECRET, EXPIRES_IN, REFRESH_TOKEN} from "../app.constants";
 import {Router} from "@angular/router";
+
+export class AuthResponse {
+    // tslint:disable-next-line:variable-name
+    access_token: string;
+    // tslint:disable-next-line:variable-name
+    token_type: string;
+    // tslint:disable-next-line:variable-name
+    refresh_token: string;
+    // tslint:disable-next-line:variable-name
+    expires_in: number;
+    scope: string;
+    organization: string;
+}
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    env = environment;
+    constructor(private http: HttpClient, private router: Router) {
+    }
 
-    constructor(private http: HttpClient, private router: Router) {}
+    get token(): string {
+        let expDate
+        if (localStorage.getItem(EXPIRES_IN )) {
+            expDate = new Date(localStorage.getItem(EXPIRES_IN));
+        }
+        console.log('expDate EXPIRES_IN', expDate)
+        if (!expDate || new Date() > expDate) {
+            this.logout();
+            return null;
+        }
+        return  localStorage.getItem(ACCESS_TOKEN);
+    }
 
-    login(credentials: Credentials): Observable<AppUser> {
+    login(username: string, password: string): Observable<any> {
+        const params = new URLSearchParams();
+        params.append('username', username);
+        params.append('password', password);
+        params.append('grant_type', 'password');
+
         const httpOptions = {
             headers: new HttpHeaders({
-                'Content-Type':  'application/json',
-                'Authorization': 'Basic ' + btoa(`${credentials.login}:${credentials.password}`),
+                'Content-Type': 'application/x-www-form-urlencoded',
+                Authorization: 'Basic ' + btoa(`${CLIENT_ID}:${CLIENT_SECRET}`),
             }),
-            withCredentials: true,
         };
-        // return this.http.post(this.env.base + "/login", null, httpOptions)
-        //     .pipe(switchMap(_ => this.http.get(this.env.base + "/appuser.json", {withCredentials: true})),
-        //         map(data => data as AppUser)
-        //     );
-        return this.http.get(this.env.base + "/appuser.json", {withCredentials: true}).pipe(map(data => data as AppUser));
+        return this.http.post<any>(AUTH_URL, params.toString(), httpOptions).pipe(
+            tap(response => this.setToken(response))
+        );
     }
 
     logout() {
-        this.router.navigate(['/', 'auth', 'login']);
+        this.setToken(null);
+        this.router.navigate(['/', 'auth', 'login'])
+    }
+
+    isAuth(): boolean {
+        console.log('isAuth');
+        return !!this.token;
+    }
+
+    private setToken(response: AuthResponse | null) {
+        if (response) {
+            const expDate = new Date(new Date().getTime() + +response.expires_in * 1000);
+            console.log('expDate tokean', expDate);
+            localStorage.setItem(ACCESS_TOKEN, response.access_token);
+            localStorage.setItem(REFRESH_TOKEN, response.refresh_token);
+            localStorage.setItem(EXPIRES_IN, expDate.toString());
+        } else {
+            localStorage.clear();
+        }
     }
 }
