@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { debounce, filter, merge } from "rxjs/operators";
 import { MatSnackBar } from "@angular/material";
 import { AuthService } from "./auth.service";
 import {Router} from "@angular/router";
@@ -30,7 +29,8 @@ export class AuthComponent implements OnInit {
 
   login() {
     if (this.form.valid) {
-      this.authService.login(this.form.value).subscribe(() => this.router.navigate(['/', 'users', 'list']));
+      const {login, password} = this.form.value;
+      this.authService.login(login, password).subscribe(() => this.router.navigate(['/', 'users', 'list']));
     }
   }
 }
