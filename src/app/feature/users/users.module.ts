@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AppMaterialModule} from "../material/app.material.module";
+import {AppMaterialModule} from "../../material/app.material.module";
 import {RouterModule, Routes} from "@angular/router";
-import {UsersListComponent} from "./users-list/users-list.component";
-import { SearchComponent } from './search/search.component';
-import { GridComponent } from './grid/grid.component';
+import {UsersListComponent} from "./pages/users-page/users-list.component";
+import { SearchComponent } from './components/search/search.component';
+import { GridComponent } from './components/grid/grid.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {MainModule} from "../main/main.module";
-import {AuthGuard} from "../auth/auth.guard";
+import {AuthGuard} from "../../core/auth/auth.guard";
+import {LayoutModule} from "../../layout/layout.module";
 
 
 const routes: Routes = [
@@ -24,7 +24,7 @@ const routes: Routes = [
       CommonModule,
       AppMaterialModule,
       ReactiveFormsModule,
-      MainModule
+      LayoutModule
   ],
     exports: [RouterModule],
     declarations: [UsersListComponent, SearchComponent, GridComponent]
