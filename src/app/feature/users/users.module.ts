@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AppMaterialModule} from "../../material/app.material.module";
+import {AppMaterialModule} from "../../shared/material/app.material.module";
 import {RouterModule, Routes} from "@angular/router";
 import {UsersListComponent} from "./pages/users-page/users-list.component";
 import { SearchComponent } from './components/search/search.component';
