@@ -9,6 +9,7 @@ import {Observable} from "rxjs";
 })
 export class UsersListComponent {
     userList: Observable<User[]>;
+    displayedColumns: string[] = ["id", "login", "name", "surname"];
 
     constructor(private usersDataService: UsersDataService) {
     }
