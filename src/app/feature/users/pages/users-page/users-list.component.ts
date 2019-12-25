@@ -1,10 +1,10 @@
 import { Component, ElementRef, ViewChild } from "@angular/core";
-import { User } from "../store/user";
-import { UsersService } from "../users.service";
+import { User } from "../../components/store/user";
+import { UsersService } from "../../users.service";
 import { fromEvent, merge, Observable } from "rxjs";
 import { MatSort } from "@angular/material/sort";
 import { MatPaginator } from "@angular/material/paginator";
-import { UsersDataSource } from "../usersDataSource";
+import { UsersDataSource } from "../../usersDataSource";
 import { debounceTime, distinctUntilChanged, tap } from "rxjs/operators";
 @Component({
   selector: "app-users-list",

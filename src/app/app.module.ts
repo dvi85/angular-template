@@ -6,10 +6,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppMaterialModule } from "./material/app.material.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { MainModule } from "./main/main.module";
-import { AuthInterceptor } from "./interceptors/auth-interceptor.service";
-import {AuthGuard} from "./auth/auth.guard";
-import {ErrorInterceptor} from "./interceptors/errors-interceptor.service";
+import { AuthInterceptor } from "./core/interceptors/auth-interceptor.service";
+import {AuthGuard} from "./core/auth/auth.guard";
+import {ErrorInterceptor} from "./core/interceptors/errors-interceptor.service";
+import {LayoutModule} from "./layout/layout.module";
 
 const AUTH_INTERCEPTOR: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -33,7 +33,7 @@ const ERROR_INTERCEPTOR: Provider = {
     AppMaterialModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MainModule
+    LayoutModule
   ],
   providers: [AUTH_INTERCEPTOR, ERROR_INTERCEPTOR, AuthGuard],
   bootstrap: [AppComponent]

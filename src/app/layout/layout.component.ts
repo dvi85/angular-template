@@ -1,13 +1,13 @@
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {MediaMatcher} from "@angular/cdk/layout";
-import {AuthService} from "../../auth/auth.service";
+import {AuthService} from "../core/auth/auth.service";
 
 @Component({
   selector: 'app-container',
-  templateUrl: './container.component.html',
-  styleUrls: ['./container.component.css']
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.css']
 })
-export class ContainerComponent implements OnDestroy {
+export class LayoutComponent implements OnDestroy {
     mobileQuery: MediaQueryList;
 
 

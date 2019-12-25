@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import { User } from "./store/user";
+import { User } from "./components/store/user";
 import { Observable } from "rxjs/internal/Observable";
 import { of } from "rxjs/internal/observable/of";
 import { map } from "rxjs/operators";
 import { HttpClient, HttpParams } from "@angular/common/http";
-import {Pageable} from "./store/pageable";
+import {Pageable} from "./components/store/pageable";
 
 @Injectable({
   providedIn: "root"
