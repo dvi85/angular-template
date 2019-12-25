@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {ACCESS_TOKEN, AUTH_URL, CLIENT_ID, CLIENT_SECRET, EXPIRES_IN, REFRESH_TOKEN} from "../app.constants";
+import {ACCESS_TOKEN, AUTH_URL, CLIENT_ID, CLIENT_SECRET, EXPIRES_IN, REFRESH_TOKEN} from "../../app.constants";
 import {Router} from "@angular/router";
 
 export class AuthResponse {

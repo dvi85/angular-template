@@ -1,5 +1,5 @@
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
-import { User } from "./store/user";
+import { User } from "./components/store/user";
 import { BehaviorSubject, Observable, of } from "rxjs";
 import { UsersService } from "./users.service";
 import { catchError, finalize } from "rxjs/operators";

@@ -1,7 +1,7 @@
 import { Component, Input, SimpleChange, ViewChild } from "@angular/core";
 import { User } from "../store/user";
 import { MatPaginator, MatTableDataSource } from "@angular/material";
-import { UsersService } from "../users.service";
+import { UsersService } from "../../users.service";
 
 @Component({
   selector: "app-grid",

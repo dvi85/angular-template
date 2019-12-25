@@ -1,4 +1,4 @@
-import {User} from "../src/app/users/store/user";
+import {User} from "../src/app/feature/users/components/store/user";
 
 
 export const COURSES: any = {
