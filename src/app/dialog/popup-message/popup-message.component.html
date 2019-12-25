@@ -1,13 +1,13 @@
 <div class="confirm-dialog">
   <h1 mat-dialog-title appDraggable dragTarget=".mat-dialog-container">
-    {{ dialogData.title ? dialogData.title : 'Ошибка' }}
+    {{ dialogData.title ? dialogData.title : "Ошибка" }}
   </h1>
   <div mat-dialog-content class="content">
     <span class="message">{{ dialogData.message }}</span>
   </div>
   <div mat-dialog-actions class="actions">
-    <button class="round-button" (click)="close()">
-      {{ dialogData.buttonName ? dialogData.buttonName : 'Закрыть' }}
+    <button mat-raised-button (click)="close()" color="primary">
+      {{ dialogData.buttonName ? dialogData.buttonName : "Закрыть" }}
     </button>
   </div>
 </div>
