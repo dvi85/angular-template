@@ -3,7 +3,7 @@ import { NgModule, Provider } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AppMaterialModule } from "./material/app.material.module";
+import { AppMaterialModule } from "./shared/material/app.material.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthInterceptor } from "./core/interceptors/auth-interceptor.service";

@@ -10,9 +10,9 @@ import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { AuthService } from "../auth/auth.service";
 import { Router } from "@angular/router";
-import { PopupMessageComponent } from "../../dialog/popup-message/popup-message.component";
+import { PopupMessageComponent } from "../../shared/dialog/popup-message/popup-message.component";
 import {MatDialog} from "@angular/material/dialog";
-import {OpenPopupService} from "../../dialog/open-popup.service";
+import {OpenPopupService} from "../../shared/dialog/open-popup.service";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
