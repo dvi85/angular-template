@@ -6,10 +6,12 @@ import { catchError, finalize } from "rxjs/operators";
 
 export class UsersDataSource implements DataSource<User> {
   private usersSubject = new BehaviorSubject<User[]>([]);
+  private usersCountSubject = new BehaviorSubject<number>(0);
 
   private loadingSubject = new BehaviorSubject<boolean>(false);
 
   public loading$ = this.loadingSubject.asObservable();
+  public usersCount$ = this.usersCountSubject.asObservable();
 
   constructor(private usersService: UsersService) {}
 
@@ -27,7 +29,10 @@ export class UsersDataSource implements DataSource<User> {
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
       )
-      .subscribe(lessons => this.usersSubject.next(lessons));
+      .subscribe(users => {
+        this.usersSubject.next(users['payload']);
+        this.usersCountSubject.next(users['usersCount']);
+      });
   }
 
   connect(
