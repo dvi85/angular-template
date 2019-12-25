@@ -1,7 +1,7 @@
 import { Component, Input, SimpleChange, ViewChild } from "@angular/core";
 import { User } from "../store/user";
 import { MatPaginator, MatTableDataSource } from "@angular/material";
-import { UsersDataService } from "../users.data.service";
+import { UsersService } from "../users.service";
 
 @Component({
   selector: "app-grid",
@@ -9,7 +9,7 @@ import { UsersDataService } from "../users.data.service";
   styleUrls: ["./grid.component.css"]
 })
 export class GridComponent {
-  constructor(private usersDataService: UsersDataService) {}
+  constructor(private usersDataService: UsersService) {}
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @Input() userList;
