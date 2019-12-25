@@ -5,7 +5,8 @@
   "description": "Example project from an angular.io guide.",
   "scripts": {
     "lint": "tslint ./src/**/*.ts -t verbose",
-    "start": "ng serve",
+    "start": "ng serve  --proxy-config ./proxy.json",
+    "server": "ts-node -P ./server/server.tsconfig.json ./server/server.ts",
     "test": "ng test",
     "build": "ng build --prod",
     "e2e": "ng e2e",
