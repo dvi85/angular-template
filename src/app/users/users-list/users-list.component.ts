@@ -27,7 +27,7 @@ export class UsersListComponent {
   ngOnInit() {
     this.dataSource = new UsersDataSource(this.usersService);
 
-    this.dataSource.loadLessons("", "asc", 0, 3);
+    this.dataSource.loadLessons("", "asc", 0, 10);
   }
 
   ngAfterViewInit() {
@@ -57,10 +57,5 @@ export class UsersListComponent {
       this.paginator.pageIndex,
       this.paginator.pageSize
     );
-  }
-
-  searchData({ search }) {
-    const searchStr = typeof search === "string" ? search : "";
-    this.userList = this.usersService.getUsersList(searchStr);
   }
 }

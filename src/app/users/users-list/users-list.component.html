@@ -47,7 +47,9 @@
         </table>
 
         <mat-paginator
+            [length]="dataSource.usersCount$ | async"
             [pageSizeOptions]="[10, 20, 50]"
+            [pageSize]="10"
             showFirstLastButtons
         ></mat-paginator>
       </div>
