@@ -40,7 +40,7 @@ export function searchUsers(req: Request, res: Response) {
     const lessonsPage = lessons.slice(initialPos, initialPos + pageSize);
 
     setTimeout(() => {
-        res.status(200).json({payload: lessonsPage});
+        res.status(200).json({payload: lessonsPage, usersCount: 256});
     },1000);
 
 
