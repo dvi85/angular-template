@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material";
 import { AuthService } from "../../core/auth/auth.service";
 import {Router} from "@angular/router";
+import {AUTH_SERVER_URL} from "../../app.constants";
 
 @Component({
   selector: "auth-login",
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
     login: new FormControl("", [Validators.required]),
     password: new FormControl("", [Validators.required])
   });
+  googleAuth= `${AUTH_SERVER_URL}/api/oauth2/google`;
 
   constructor(
     private snackBar: MatSnackBar,
