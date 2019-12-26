@@ -12,12 +12,7 @@ import {Pageable} from "./components/store/pageable";
 export class UsersService {
   constructor(private http: HttpClient) {}
 
-  findLessons(
-    filter = "",
-    sortOrder = "asc",
-    pageNumber = 0,
-    pageSize = 10
-  ): Observable<Pageable<User[]>> {
+  findUsers(filter = "", sortOrder = "asc", pageNumber = 0, pageSize = 10): Observable<Pageable<User[]>> {
     return this.http
       .get<Pageable<User[]>>("/api/users", {
         params: new HttpParams()
