@@ -45,18 +45,16 @@ export class AuthService {
         return !!this.token;
     }
 
-    setTokenFromGoogle(value) {
-        this.setToken(this.jwtHelper.decodeToken((value)));
-    }
-
     setToken(response: AuthResponse | null) {
         if (response) {
             console.log(this.jwtHelper.decodeToken(response.accessToken));
             console.log(this.jwtHelper.getTokenExpirationDate(response.accessToken));
             console.log(this.jwtHelper.isTokenExpired(response.accessToken));
             localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+            this.router.navigate(['/', 'users', 'list']);
         } else {
             localStorage.clear();
+            this.router.navigate(['/', 'auth', 'login'])
         }
     }
 }
