@@ -27,7 +27,7 @@ export class UsersListComponent {
   ngOnInit() {
     this.dataSource = new UsersDataSource(this.usersService);
 
-    this.dataSource.loadLessons("", "asc", 0, 10);
+    this.dataSource.findUsers("", "asc", 0, 10);
   }
 
   ngAfterViewInit() {
@@ -40,18 +40,18 @@ export class UsersListComponent {
         tap(() => {
           this.paginator.pageIndex = 0;
 
-          this.loadLessonsPage();
+          this.loadUsers();
         })
       )
       .subscribe();
 
     merge(this.sort.sortChange, this.paginator.page)
-      .pipe(tap(() => this.loadLessonsPage()))
+      .pipe(tap(() => this.loadUsers()))
       .subscribe();
   }
 
-  loadLessonsPage() {
-    this.dataSource.loadLessons(
+  loadUsers() {
+    this.dataSource.findUsers(
       this.input.nativeElement.value,
       this.sort.direction,
       this.paginator.pageIndex,

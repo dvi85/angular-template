@@ -1,15 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material";
-import { AuthService } from "../core/auth/auth.service";
+import { AuthService } from "../../core/auth/auth.service";
 import {Router} from "@angular/router";
 
 @Component({
   selector: "auth-login",
-  templateUrl: "./auth.component.html",
-  styleUrls: ["./auth.component.css"]
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
-export class AuthComponent implements OnInit {
+export class LoginComponent implements OnInit {
   hide: boolean = true;
   snackBarRef;
 

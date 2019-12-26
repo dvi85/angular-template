@@ -16,11 +16,11 @@ export function searchUsers(req: Request, res: Response) {
           pageNumber = parseInt(queryParams.pageNumber) || 0,
           pageSize = parseInt(queryParams.pageSize);
 
-    let lessons = Object.values(USERS).sort((l1, l2) => l1.id - l2.id);
+    let users = Object.values(USERS).sort((l1, l2) => l1.id - l2.id);
 
     if (filter) {
 
-       lessons = lessons.filter(
+        users = users.filter(
            user =>
                filter === undefined ||
                filter === null ||
@@ -32,15 +32,15 @@ export function searchUsers(req: Request, res: Response) {
     }
 
     if (sortOrder == "desc") {
-        lessons = lessons.reverse();
+        users = users.reverse();
     }
 
     const initialPos = pageNumber * pageSize;
 
-    const lessonsPage = lessons.slice(initialPos, initialPos + pageSize);
+    const usersPage = users.slice(initialPos, initialPos + pageSize);
 
     setTimeout(() => {
-        res.status(200).json({payload: lessonsPage, usersCount: 256});
+        res.status(200).json({payload: usersPage, usersCount: users.length});
     },1000);
 
 
