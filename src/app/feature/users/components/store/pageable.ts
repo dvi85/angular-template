@@ -1,4 +1,4 @@
 export class Pageable<T> {
-    usersCount: number;
-    payload: T[] = [];
+    totalElements: number;
+    content: T[] = [];
 };
