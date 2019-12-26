@@ -4,6 +4,7 @@ import {AppMaterialModule} from "../../shared/material/app.material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {LoginComponent} from "./login.component";
 import {RouterModule, Routes} from "@angular/router";
+import { AuthorisationComponent } from './authorisation/authorisation.component';
 
 const routes: Routes = [
     {
@@ -11,11 +12,14 @@ const routes: Routes = [
     },
     {
         path: 'login', component: LoginComponent
+    },
+    {
+        path: 'authorisation', component: AuthorisationComponent
     }
 ];
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, AuthorisationComponent],
   imports: [
       RouterModule.forChild(routes),
       CommonModule,
