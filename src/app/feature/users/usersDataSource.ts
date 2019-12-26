@@ -15,7 +15,7 @@ export class UsersDataSource implements DataSource<User> {
 
   constructor(private usersService: UsersService) {}
 
-  loadLessons(
+  findUsers(
     filter: string,
     sortDirection: string,
     pageIndex: number,
@@ -24,7 +24,7 @@ export class UsersDataSource implements DataSource<User> {
     this.loadingSubject.next(true);
 
     this.usersService
-      .findLessons(filter, sortDirection, pageIndex, pageSize)
+      .findUsers(filter, sortDirection, pageIndex, pageSize)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -35,9 +35,7 @@ export class UsersDataSource implements DataSource<User> {
       });
   }
 
-  connect(
-    collectionViewer: CollectionViewer
-  ): Observable<User[] | ReadonlyArray<User>> {
+  connect(collectionViewer: CollectionViewer): Observable<User[] | ReadonlyArray<User>> {
     console.log("Connecting data source");
     return this.usersSubject.asObservable();
   }
