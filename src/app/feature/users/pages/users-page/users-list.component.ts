@@ -60,4 +60,12 @@ export class UsersListComponent {
       this.paginator.pageSize
     );
   }
+
+  blockUser(user: User) {
+    this.usersService.blockUser(user).subscribe(() => this.loadUsers());
+  }
+
+  unBlockUser(user: User) {
+    this.usersService.unBlockUser(user).subscribe(() => this.loadUsers());
+  }
 }
