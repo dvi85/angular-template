@@ -4,7 +4,8 @@
 
 export const environment = {
     production: false,
-    base: "http://localhost:4200/assets/mock"
+    base: "http://localhost:4200/assets/mock",
+    authServerUrl: 'http://ws19106.tbm.ru:8081'
 };
 
 /*
