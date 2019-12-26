@@ -30,8 +30,8 @@ export class UsersDataSource implements DataSource<User> {
         finalize(() => this.loadingSubject.next(false))
       )
       .subscribe(users => {
-        this.usersSubject.next(users['payload']);
-        this.usersCountSubject.next(users['usersCount']);
+        this.usersSubject.next(users['content']);
+        this.usersCountSubject.next(users['totalElements']);
       });
   }
 
