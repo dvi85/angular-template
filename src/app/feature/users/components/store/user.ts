@@ -1,8 +1,11 @@
 export class User {
   constructor(
     public id: number,
-    public login: string,
     public name: string,
-    public surname: string
+    public email: string,
+    public imageUrl: string,
+    public status: string,
+    public roles: string[] = [],
+    public enabled: boolean
   ) {}
 }
