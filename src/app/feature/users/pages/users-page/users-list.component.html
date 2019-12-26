@@ -53,8 +53,8 @@
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef>Action</th>
             <td mat-cell *matCellDef="let element">
-              <button mat-raised-button color="accent" *ngIf="element.status == 'ACTIVE'">Block user</button>
-              <button mat-raised-button color="primary" *ngIf="element.status != 'ACTIVE'">Un block user</button>
+              <button mat-raised-button color="accent" *ngIf="element.status == 'ACTIVE'" (click)="blockUser(element)">Block user</button>
+              <button mat-raised-button color="primary" *ngIf="element.status != 'ACTIVE'" (click)="unBlockUser(element)">Un block user</button>
             </td>
           </ng-container>
 
