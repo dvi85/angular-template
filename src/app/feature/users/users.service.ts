@@ -11,12 +11,13 @@ import {AUTH_SERVER_URL, URL_BLOCK_USER, URL_UNBLOCK_USER, URL_USERS} from "../.
 export class UsersService {
   constructor(private http: HttpClient) {}
 
-  findUsers(filter = "", sortOrder = "asc", pageNumber = 0, pageSize = 10): Observable<Pageable<User[]>> {
+  findUsers(filter = "", sortOrder = "asc", sortBy = '', pageNumber = 0, pageSize = 10): Observable<Pageable<User[]>> {
     return this.http
       .get<Pageable<User[]>>(URL_USERS, {
         params: new HttpParams()
           .set("filter", filter)
           .set("direction", sortOrder.toUpperCase())
+          .set("sortBy", sortBy)
           .set("page", pageNumber.toString())
           .set("size", pageSize.toString())
       });
