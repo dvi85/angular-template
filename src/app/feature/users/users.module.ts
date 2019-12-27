@@ -6,12 +6,13 @@ import {UsersListComponent} from "./pages/users-page/users-list.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AuthGuard} from "../../core/auth/auth.guard";
 import {LayoutModule} from "../../layout/layout.module";
+import {AdminGuard} from "../../core/guards/admin.guard";
 
 
 const routes: Routes = [
     {
         path: 'list',
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, AdminGuard],
         component: UsersListComponent
     }
 ];

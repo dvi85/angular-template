@@ -1,6 +1,7 @@
-import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnDestroy} from '@angular/core';
 import {MediaMatcher} from "@angular/cdk/layout";
 import {AuthService} from "../core/auth/auth.service";
+import {User} from "../feature/users/components/store/user";
 
 @Component({
   selector: 'app-container',
@@ -8,6 +9,7 @@ import {AuthService} from "../core/auth/auth.service";
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnDestroy {
+    @Input() currentUser: User;
     mobileQuery: MediaQueryList;
 
 
