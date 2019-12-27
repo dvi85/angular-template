@@ -13,3 +13,11 @@ mat-form-field {
 mat-spinner {
   margin: auto;
 }
+
+.action-col {
+  width: 200px;
+}
+
+.status-col {
+  width: 150px;
+}
