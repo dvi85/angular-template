@@ -13,6 +13,7 @@ import { debounceTime, distinctUntilChanged, tap } from "rxjs/operators";
 })
 export class UsersListComponent {
   userList: Observable<User[]>;
+  currentUser$: Observable<User> = this.usersService.getCurrentUser();
   dataSource: UsersDataSource;
   displayedColumns: string[] = ["id", "email", "name", "status", "roles", "action"];
 
