@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {AuthGuard} from "../../core/auth/auth.guard";
 import {LayoutModule} from "../../layout/layout.module";
 import {AdminGuard} from "../../core/guards/admin.guard";
+import { Forbidden403Component } from './pages/forbidden403/forbidden403.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
         path: 'list',
         canActivate: [AuthGuard, AdminGuard],
         component: UsersListComponent
+    },
+    {
+        path: '403',
+        component: Forbidden403Component
     }
 ];
 
@@ -26,6 +31,6 @@ const routes: Routes = [
       LayoutModule
   ],
     exports: [RouterModule],
-    declarations: [UsersListComponent]
+    declarations: [UsersListComponent, Forbidden403Component]
 })
 export class UsersModule {}
