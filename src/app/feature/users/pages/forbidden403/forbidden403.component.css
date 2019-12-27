@@ -1,0 +1,43 @@
+.page403 {
+  padding-top: 75px;
+  background-color: #eaeff4;
+}
+
+.page403__container {
+  margin: auto;
+  width: 911px;
+}
+
+.page403__container__text {
+  display: inline-block;
+  margin-left: 60px;
+}
+
+.page403__container__text span {
+  font-size: 288px;
+  line-height: 29px;
+  color: #9eadbb;
+  font-family: "Roboto";
+  font-weight: 700;
+  text-align: center;
+}
+
+.page403__container__text h1 {
+  margin-top: 44px;
+  text-transform: uppercase;
+  font-size: 47px;
+  line-height: 29px;
+  color: #9eadbb;
+  font-family: "Roboto";
+  font-weight: 700;
+  text-align: center;
+}
+
+.page403__container__img {
+  margin-bottom: -20px;
+}
+
+mat-sidenav-content {
+  background-color: #eaeff4;
+  margin: 0 !important;
+}
