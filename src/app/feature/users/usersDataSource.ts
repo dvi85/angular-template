@@ -18,13 +18,14 @@ export class UsersDataSource implements DataSource<User> {
   findUsers(
     filter: string,
     sortDirection: string,
+    sortBy: string,
     pageIndex: number,
     pageSize: number
   ) {
     this.loadingSubject.next(true);
 
     this.usersService
-      .findUsers(filter, sortDirection, pageIndex, pageSize)
+      .findUsers(filter, sortDirection, sortBy, pageIndex, pageSize)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
