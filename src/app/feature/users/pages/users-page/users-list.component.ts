@@ -29,7 +29,7 @@ export class UsersListComponent {
   ngOnInit() {
     this.dataSource = new UsersDataSource(this.usersService);
 
-    this.dataSource.findUsers("", "asc", 0, 10);
+    this.dataSource.findUsers("", "asc", '', 0, 10);
   }
 
   ngAfterViewInit() {
@@ -56,6 +56,7 @@ export class UsersListComponent {
     this.dataSource.findUsers(
       this.input.nativeElement.value,
       this.sort.direction,
+      this.sort.active,
       this.paginator.pageIndex,
       this.paginator.pageSize
     );
