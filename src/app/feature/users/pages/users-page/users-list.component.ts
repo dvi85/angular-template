@@ -12,12 +12,8 @@ import { debounceTime, distinctUntilChanged, tap } from "rxjs/operators";
   styleUrls: ["./users-list.component.css"]
 })
 export class UsersListComponent {
-  userList: Observable<User[]>;
-  currentUser$: Observable<User> = this.usersService.getCurrentUser();
   dataSource: UsersDataSource;
   displayedColumns: string[] = ["id", "email", "name", "status", "roles", "action"];
-
-
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
