@@ -23,7 +23,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     private openPopupService: OpenPopupService,
   ) {}
 
-  showError(dialogMessage: string, globalMessage) {}
+  showError(dialogMessage: string) {
+    this.openDialog(dialogMessage, 'Ошибка');
+  }
 
   intercept(
     req: HttpRequest<any>,
@@ -34,19 +36,13 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         console.log("error.status", error.status);
         switch (error.status) {
-          // case 400:
-          //   if (error.error && error.error.error === "invalid_grant") {
-          //     this.showError("", "");
-          //   }
-          //   this.showError("", "");
-          //   break;
           case 401 || 403:
             this.authService.logout();
             this.router.navigate(["/auth"]);
-            this.showError("", "");
+            this.showError(this.getErrorMessage(error));
             break;
           default:
-              this.openDialog(this.getErrorMessage(error), 'Ошибка');
+              this.showError(this.getErrorMessage(error));
             break;
         }
         return throwError(error);
@@ -60,6 +56,6 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
     getErrorMessage(e) {
-        return e.error && e.error.errors ? e.error.errors[0] : JSON.stringify(e);
+        return e.error  ? JSON.stringify(e.error) : JSON.stringify(e);
     }
 }
